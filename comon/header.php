@@ -2,22 +2,22 @@
 <html>
 
 <head>
-  <title>Barra de navegación</title>
-
+  <title>Video Game</title>
+  
 </head>
 
 <body class="text-center">
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default bg-dark">
     <div class="container-fluid">
       <!-- Encabezado de la barra de navegación -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="./index.php">Video Games</a>
+        <a class="navbar-brand" href="./index.php" >Video Game</a>
       </div>
 
       <!-- Opciones de navegación -->
       <ul class="nav navbar-nav pg">
-        <li><a href="./index.php">Página principal</a></li>
-        <li><a href="./agregarjuegos.php">Agregar Juegos</a></li>
+      <li><a href="./index.php">Mis Juegos</a></li>
+        <li><a href="./gestionarjuegos.php">Gestionar Juegos</a></li>
       </ul>
 
       <!-- Cerrar sesión -->
