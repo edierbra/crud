@@ -11,74 +11,65 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 <?php include('../../comon/header.php') ?>
 
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
   <style>
-    .table-with-margin {
-      margin-left: 20px;
-    }
-  </style>
+  .highlight {
+    background-color: yellow;
+  }
+
+  .form-inline .form-control.input-lg {
+    width: 380px;
+    height: 60px;
+  }
+</style>
 </head>
 
-<body class="text-center">
-  <?php
-  // Incluir archivo de conexión a la base de datos
-  require '../../model/conexion.php';
-  // Crear instancia de la clase de conexión
-  $conexion = new Conexion();
-  // Conectarse a la base de datos
-  $conexion->conectar();
-  // ID del usuario
-  $idUsuario = $_SESSION['id'];
-  // Consulta SQL
-  $sql = "SELECT v.id_videojuego_pk, v.titulo, v.precio, v.tamano, c.nombre AS categoria, p.nombre AS plataforma 
-          FROM videojuegos v 
-          JOIN categorias c ON v.id_categoria_fk = c.id_categoria_pk 
-          JOIN plataformas p ON v.id_plataforma_fk = p.id_plataforma_pk 
-          JOIN usuario_videojuego uv ON v.id_videojuego_pk = uv.id_videojuego_fk 
-          WHERE uv.id_usuario_fk = $idUsuario";
-  // Ejecutar consulta utilizando la función query de la clase de conexión
-  $resultado = $conexion->query($sql);
+<body>
+  <div class="container">
+    <div class="flex flex-lg-row">
+      <form id="searchForm" class="form-inline" style="display: inline-flex;">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" id="search" name="search" class="form-control input-lg" placeholder="Ingrese el nombre del videojuego a buscar">
+          </div>
+        </div>
+      </form>
 
-  // Verificar si hay resultados
-  if ($resultado->num_rows > 0) {
-    ?>
-    <div class="table-responsive">
-        <h1 class="text-center"> MIS JUEGOS </h1>
-        <table class="table table-bordered text-center">
-            <thead>
-                <tr>
-                    <th class="text-center">ID videojuego</th>
-                    <th class="text-center">Título</th>
-                    <th class="text-center">Precio ($)</th>
-                    <th class="text-center">Tamaño (MB)</th>
-                    <th class="text-center">Categoría</th>
-                    <th class="text-center">Plataforma</th>
-                </tr>
-            </thead>
-            <?php
-            // Recorrer filas de resultados
-            while ($row = $resultado->fetch_assoc()) {
-            ?>
-                <tr>
-                    <td><?php echo $row['id_videojuego_pk']; ?></td>
-                    <td><?php echo $row['titulo']; ?></td>
-                    <td><?php echo $row['precio']; ?></td>
-                    <td><?php echo $row['tamano']; ?></td>
-                    <td><?php echo $row['categoria']; ?></td>
-                    <td><?php echo $row['plataforma']; ?></td>
-                </tr>
-            <?php
-            }
-      } else {
-        ?>
-        <h4>"No se encontraron videojuegos asociados a tu usuario!!!"</h4>
-        <img src="../../img/sorry.png" alt="No tienes Videojuegos" width="350px">
-        <p>
-          No tienes videojuegos? <a href="./gestionarjuegos.php"> Agregar Juegos!</a>
-        </p>
-      <?php
-      }
-      // Cerrar conexión
-      $conexion->cerrar();
-      ?>
+    </div>
+
+    <body class="text-center">
+      <div id="searchResults"></div>
+    </body>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Capturar el evento de cambio en el campo de búsqueda
+      $('#search').on('input', function() {
+        // Obtener el valor del campo de búsqueda
+        var searchTerm = $(this).val();
+
+        // Enviar una solicitud AJAX al archivo PHP para obtener los resultados
+        $.ajax({
+          url: 'searchindexadmin.php',
+          method: 'GET',
+          data: {
+            search: searchTerm
+          },
+          success: function(response) {
+            // Mostrar los resultados en el contenedor de resultados
+            $('#searchResults').html(response);
+          }
+        });
+      });
+
+      // Ejecutar la búsqueda al cargar la página
+      $('#search').trigger('input');
+    });
+  </script>
 </body>
