@@ -24,7 +24,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="../../controller/cerrarSesion.php">
-            <button type="button" class="btn btn-default">Cerrar sesión</button>
+            <button type="button" class="btn btn-primary">Cerrar sesión</button>
           </a>
         </li>
       </ul>

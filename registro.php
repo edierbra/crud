@@ -73,7 +73,7 @@
               <div class="spacing-2"></div>
 
               <!-- Caja de texto para usuario -->
-              <label class="sr-only" for="user">Email</label>
+              <label class="sr-only" for="email">Email</label>
               <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-envelope fixed-width-icon"></i></div>
                 <input type="text" class="form-control" name="email" placeholder="Ingresa tu email">
