@@ -76,7 +76,7 @@ $('#registro').click(function () {
 
     }
   });
-  console.log('Datos enviados por AJAX:', form);
+
 });
 
 $('#crearjuego').click(function () {
@@ -101,19 +101,23 @@ $('#crearjuego').click(function () {
       $('#load').hide();
 
       if (res == 'error_1') {
-        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+        swal('Error', 'Campos obligatorios, por favor llena todos los campos', 'warning');
       } else if (res == 'error_2') {
-        swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
-      } else if (res == 'error_3') {
-        swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
-      } else if (res == 'error_4') {
-        swal('Error', 'Por favor ingresa un correo valido', 'warning');
+        swal('Error en el Servidor', 'No se agrego el Videojuego, intentelo otra vez ', 'error');
+      } else if (res == 'success') {
+        swal({
+          title: 'Éxito',
+          text: 'VideoJuego agregado correctamente',
+          type: 'success'
+        }, function() {
+          window.location.href = 'gestionarjuegos.php';
+        });
       } else {
         window.location.href = res;
       }
     }
   });
 
-  console.log('Datos enviados por AJAX:', form);
+  console.log('Datos enviados por AJAX:', { titulo: titulo, precio: precio, tamano: tamano, categoria: categoria, plataforma: plataforma });
 
 });

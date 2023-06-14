@@ -25,6 +25,7 @@ $plataformas = $conexion->query($sql2);
 
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="../../css/sweetalert.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -50,15 +51,28 @@ $plataformas = $conexion->query($sql2);
                         <label class="sr-only" for="titulo">Título</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-gamepad fixed-width-icon"></i></div>
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingresa el título">
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingresa el título" oninput="validarCampo(this)">
                         </div>
+
+                        <script>
+                            function validarCampo(input) {
+                                var regex = /^[A-Za-z0-9\s\-_:.]*$/;
+                                var valido = regex.test(input.value);
+
+                                if (!valido) {
+                                    input.value = input.value.replace(/[^A-Za-z0-9\s\-_:.]/g, '');
+                                    swal('Error', "Solo se permiten letras, números, guiones medios, guiones bajos y dos puntos",'warning');
+                                }
+                            }
+                        </script>
+
 
                         <div style="margin-top: 15px;"></div>
 
                         <label class="sr-only" for="precio">Precio</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-money-bill fixed-width-icon"></i></div>
-                            <input type="number" step="0.01" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio en pesos Colombianos">
+                            <input type="number" step="1" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio en pesos Colombianos">
                         </div>
 
                         <div style="margin-top: 15px;"></div>
@@ -75,7 +89,7 @@ $plataformas = $conexion->query($sql2);
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-tag fixed-width-icon"></i></div>
                             <select id="categoria" class="form-control" name="categoria">
-                                <option disabled selected value="">Categoría</option>
+                                <option disabled selected value="">Seleccione una Categoría</option>
                                 <?php
                                 if ($categorias->num_rows > 0) {
                                     while ($row = $categorias->fetch_assoc()) {
@@ -94,7 +108,7 @@ $plataformas = $conexion->query($sql2);
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fas fa-desktop fixed-width-icon"></i></div>
                             <select id="plataforma" class="form-control" name="plataforma">
-                                <option disabled selected value="">Plataforma</option>
+                                <option disabled value="" selected>Seleccione una Plataforma</option>
                                 <?php
                                 if ($plataformas->num_rows > 0) {
                                     while ($row = $plataformas->fetch_assoc()) {
