@@ -3,7 +3,7 @@
 
 <head>
   <title>Video Game</title>
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body class="text-center">
@@ -32,7 +32,7 @@
       <ul class="nav">
             <li><h7>Nombre: <?php echo ucfirst($_SESSION['nombre']); ?></h7></li>
             <li><h5>Usuario: <?php echo ucfirst($_SESSION['email']); ?></h5></li>
-            <li><h5>Edad: <?php echo ucfirst($_SESSION['edad']); ?></h5></li>
+            <li><h5>Edad: <?php echo ucfirst($_SESSION['edad']); ?>, ID: <?php echo ucfirst($_SESSION['id']); ?></h5></li>
           </ul>
       </ul>
     </div>

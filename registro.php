@@ -24,6 +24,12 @@
     <meta charset="utf-8">
     <title>Login en PHP</title>
 
+    <style>
+      .fixed-width-icon {
+  width: 20px; /* Ajusta el ancho según tus necesidades */
+}
+    </style>
+
     <!-- Importamos los estilos de Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Font Awesome: para los iconos -->
@@ -59,7 +65,7 @@
               <!-- Caja de texto para usuario -->
               <label class="sr-only" for="user">Nombre</label>
               <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <div class="input-group-addon"><i class="fa fa-user fixed-width-icon"></i></div>
                 <input type="text" class="form-control" name="name" placeholder="Ingresa tu nombre">
               </div>
 
@@ -69,7 +75,7 @@
               <!-- Caja de texto para usuario -->
               <label class="sr-only" for="user">Email</label>
               <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <div class="input-group-addon"><i class="fa fa-envelope fixed-width-icon"></i></div>
                 <input type="text" class="form-control" name="email" placeholder="Ingresa tu email">
               </div>
 
@@ -79,7 +85,7 @@
               <!-- Caja de texto para edad -->
               <label class="sr-only" for="edad">Edad</label>
               <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                <div class="input-group-addon"><i class="fa fa-birthday-cake fixed-width-icon"></i></div>
                 <input type="number" class="form-control" name="edad" placeholder="Ingresa tu Edad">
               </div>
 
@@ -89,7 +95,7 @@
               <!-- Caja de texto para la clave-->
               <label class="sr-only" for="clave">Contraseña</label>
               <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                <div class="input-group-addon"><i class="fa fa-lock fixed-width-icon"></i></div>
                 <input type="password" autocomplete="off" class="form-control" name="clave" placeholder="Ingresa tu clave">
               </div>
 
@@ -99,7 +105,7 @@
               <!-- Caja de texto para la clave-->
               <label class="sr-only" for="clave">Verificar contraseña</label>
               <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                <div class="input-group-addon"><i class="fa fa-lock fixed-width-icon"></i></div>
                 <input type="password" autocomplete="off" class="form-control" name="clave2" placeholder="Verificar contraseña">
               </div>
 
