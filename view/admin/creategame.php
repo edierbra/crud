@@ -56,12 +56,12 @@ $plataformas = $conexion->query($sql2);
 
                         <script>
                             function validarCampo(input) {
-                                var regex = /^[A-Za-z0-9\s\-_:.]*$/;
+                                var regex = /^[A-Za-z0-9\s\-_:'".]*$/;
                                 var valido = regex.test(input.value);
 
                                 if (!valido) {
-                                    input.value = input.value.replace(/[^A-Za-z0-9\s\-_:.]/g, '');
-                                    swal('Error', "Solo se permiten letras, números, guiones medios, guiones bajos y dos puntos",'warning');
+                                    input.value = input.value.replace(/[^A-Za-z0-9\s\-_:'".]/g, '');
+                                    swal('Error', "Solo se permiten letras, números, guiones medios, guiones bajos, comillas y dos puntos",'warning');
                                 }
                             }
                         </script>

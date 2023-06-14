@@ -87,7 +87,7 @@ $('#crearjuego').click(function () {
   var precio = $('#precio').val();
   var tamano = $('#tamano').val();
   var categoria = $('#categoria').val();
-  var plataforma= $('#plataforma').val();
+  var plataforma = $('#plataforma').val();
 
   $.ajax({
     method: 'POST',
@@ -103,13 +103,15 @@ $('#crearjuego').click(function () {
       if (res == 'error_1') {
         swal('Error', 'Campos obligatorios, por favor llena todos los campos', 'warning');
       } else if (res == 'error_2') {
+        swal('Error', 'Ya existe registrado un Videojuego con el mismo nombre, ingrese otro nombre', 'error');
+      } else if (res == 'error_3') {
         swal('Error en el Servidor', 'No se agrego el Videojuego, intentelo otra vez ', 'error');
       } else if (res == 'success') {
         swal({
           title: 'Éxito',
           text: 'VideoJuego agregado correctamente',
           type: 'success'
-        }, function() {
+        }, function () {
           window.location.href = 'gestionarjuegos.php';
         });
       } else {
