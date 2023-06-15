@@ -50,6 +50,10 @@ if ($resultado->num_rows > 0) {
         .mt-2 {
             display: none;
         }
+
+        .custom-btn {
+            width: 150px;
+        }
     </style>
 </head>
 
@@ -75,7 +79,7 @@ if ($resultado->num_rows > 0) {
 
                                 if (!valido) {
                                     input.value = input.value.replace(/[^A-Za-z0-9\s\-_:'".]/g, '');
-                                    swal('Error', "Solo se permiten letras, números, guiones medios, guiones bajos, comillas y dos puntos",'warning');
+                                    swal('Error', "Solo se permiten letras, números, guiones medios, guiones bajos, comillas y dos puntos", 'warning');
                                 }
                             }
                         </script>
@@ -103,18 +107,18 @@ if ($resultado->num_rows > 0) {
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-tag fixed-width-icon"></i></div>
                             <select id="categoria" class="form-control" name="categoria">
-                            <option disabled selected value="">Seleccione una Categoría</option>
-                            <?php
-                            if ($categorias->num_rows > 0) {
-                                while ($row = $categorias->fetch_assoc()) {
-                                    $selected = ($row['id_categoria_pk'] == $categoria) ? 'selected' : '';
-                                    ?>
-                                    <option value="<?php echo $row['id_categoria_pk']; ?>" <?php echo $selected; ?>><?php echo $row['nombrecategoria']; ?></option>
-                                    <?php
+                                <option disabled selected value="">Seleccione una Categoría</option>
+                                <?php
+                                if ($categorias->num_rows > 0) {
+                                    while ($row = $categorias->fetch_assoc()) {
+                                        $selected = ($row['id_categoria_pk'] == $categoria) ? 'selected' : '';
+                                ?>
+                                        <option value="<?php echo $row['id_categoria_pk']; ?>" <?php echo $selected; ?>><?php echo $row['nombrecategoria']; ?></option>
+                                <?php
+                                    }
                                 }
-                            }
-                            ?>
-                        </select>
+                                ?>
+                            </select>
                         </div>
 
                         <div style="margin-top: 15px;"></div>
@@ -123,18 +127,18 @@ if ($resultado->num_rows > 0) {
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fas fa-desktop fixed-width-icon"></i></div>
                             <select id="plataforma" class="form-control" name="plataforma">
-                            <option disabled value="" selected>Seleccione una Plataforma</option>
-                            <?php
-                            if ($plataformas->num_rows > 0) {
-                                while ($row = $plataformas->fetch_assoc()) {
-                                    $selected = ($row['id_plataforma_pk'] == $plataforma) ? 'selected' : '';
-                                    ?>
-                                    <option value="<?php echo $row['id_plataforma_pk']; ?>" <?php echo $selected; ?>><?php echo $row['nombreplataforma']; ?></option>
-                                    <?php
+                                <option disabled value="" selected>Seleccione una Plataforma</option>
+                                <?php
+                                if ($plataformas->num_rows > 0) {
+                                    while ($row = $plataformas->fetch_assoc()) {
+                                        $selected = ($row['id_plataforma_pk'] == $plataforma) ? 'selected' : '';
+                                ?>
+                                        <option value="<?php echo $row['id_plataforma_pk']; ?>" <?php echo $selected; ?>><?php echo $row['nombreplataforma']; ?></option>
+                                <?php
+                                    }
                                 }
-                            }
-                            ?>
-                        </select>
+                                ?>
+                            </select>
                         </div>
 
                         <div style="margin-top: 15px;"></div>
@@ -149,9 +153,13 @@ if ($resultado->num_rows > 0) {
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="mt-2"></div>
-                                <button type="button" class="btn btn-primary btn-block" name="button" id="editarjuego" data-id="<?php echo $idVideojuego; ?>">Editar VideoJuego</button>
+                            <div class="col-xs-12">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-block custom-btn" name="button" id="editarjuego" data-id="<?php echo $idVideojuego; ?>">Editar VideoJuego</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <a href="./gestionarjuegos.php" class="btn btn-primary custom-btn">Volver</a>
+                                </div>
                             </div>
                         </div>
 
