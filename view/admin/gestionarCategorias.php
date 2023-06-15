@@ -33,13 +33,13 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" id="search" name="search" class="form-control input-lg" placeholder="Ingrese el nombre de la categoria a buscar">
+            <input type="text" id="search" name="search" class="form-control input-lg" placeholder="Ingrese el nombre de la categoría a buscar">
           </div>
         </div>
       </form>
 
       <a href="createCategoria.php" class="btn btn-primary" style="display: inline-flex; align-items: center;">
-        Añadir Categoria
+        Añadir Categoría
         <img src="../../img/agregar.png" alt="Agreg" width="50px" style="margin-left: 10px;">
       </a>
 

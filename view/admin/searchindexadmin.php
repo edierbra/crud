@@ -11,11 +11,11 @@ $idUsuario = $_SESSION['id'];
 // Consulta SQL
 $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
 $sql = "SELECT v.id_videojuego_pk, v.titulo, v.precio, v.tamano, c.nombre AS categoria, p.nombre AS plataforma 
-        FROM videojuegos v 
-        JOIN categorias c ON v.id_categoria_fk = c.id_categoria_pk 
-        JOIN plataformas p ON v.id_plataforma_fk = p.id_plataforma_pk 
-        JOIN usuario_videojuego uv ON v.id_videojuego_pk = uv.id_videojuego_fk 
-        WHERE uv.id_usuario_fk = $idUsuario AND v.titulo LIKE '%$searchTerm%'";
+FROM videojuegos v 
+LEFT JOIN categorias c ON v.id_categoria_fk = c.id_categoria_pk 
+LEFT JOIN plataformas p ON v.id_plataforma_fk = p.id_plataforma_pk 
+JOIN usuario_videojuego uv ON v.id_videojuego_pk = uv.id_videojuego_fk 
+WHERE uv.id_usuario_fk = $idUsuario AND (v.titulo LIKE '%$searchTerm%' OR (v.id_categoria_fk IS NULL AND v.id_plataforma_fk IS NULL));";
 // Ejecutar consulta utilizando la función query de la clase de conexión
 $resultado = $conexion->query($sql);
 

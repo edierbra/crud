@@ -39,12 +39,12 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                 <div class="mt-3"></div>
                 <form id="formulario_crearcategoria">
                     <fieldset>
-                        <legend class="text-center text-bold" style="font-size: 30px;">Agrega una Categoria</legend>
+                        <legend class="text-center text-bold" style="font-size: 30px;">Agrega una Categoría</legend>
 
-                        <label class="sr-only" for="categoria">Categoria</label>
+                        <label class="sr-only" for="categoria">Categoría</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-tag fixed-width-icon"></i></div>
-                            <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ingresa el nombre de la categoria" oninput="validarCampo(this)">
+                            <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ingresa el nombre de la categoría" oninput="validarCampo(this)">
                         </div>
 
                         <script>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="col-md-6">
-                                <button type="button" class="btn btn-primary btn-block custom-btn" name="button" id="crearcategoria">Agregar Categoria</button>
+                                <button type="button" class="btn btn-primary btn-block custom-btn" name="button" id="crearcategoria">Agregar Categoría</button>
                                 </div>
                                 
                                 <div class="col-md-6">

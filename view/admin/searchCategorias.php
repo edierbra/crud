@@ -23,8 +23,8 @@ if ($resultado->num_rows > 0) {
         <table class="table table-bordered text-center">
             <thead>
                 <tr>
-                    <th class="text-center">ID Categoria</th>
-                    <th class="text-center">Categoria</th>
+                    <th class="text-center">ID Categoría</th>
+                    <th class="text-center">Categoría</th>
                     <th class="text-center">Opciones</th>
                 </tr>
             </thead>
