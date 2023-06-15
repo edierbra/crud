@@ -413,13 +413,15 @@ $('#deleteCategoria').click(function () {
           swal('Error', 'No existe la categoría', 'warning');
         } else if (res == 'error_2') {
           swal('Error en el Servidor', 'No se eliminó la categoria, intentelo otra vez ', 'error');
+        } else if (res == 'error_3') {
+          swal('Error', 'No se puede eliminar categorias asociadas a videojuegos, intentelo otra vez', 'error');
         } else if (res == 'success') {
           swal({
             title: 'Éxito',
             text: 'Categoria eliminada correctamente',
             type: 'success'
           }, function () {
-            window.location.href = 'index.php';
+            window.location.href = 'gestionarCategorias.php';
           });
         } else {
           window.location.href = res;
@@ -448,13 +450,15 @@ $('#deletePlataforma').click(function () {
           swal('Error', 'No existe la plataforma', 'warning');
         } else if (res == 'error_2') {
           swal('Error en el Servidor', 'No se eliminó la plataforma, intentelo otra vez ', 'error');
+        } else if (res == 'error_3') {
+          swal('Error', 'No se puede eliminar plataformas asociadas a videojuegos, intentelo otra vez', 'error');
         } else if (res == 'success') {
           swal({
             title: 'Éxito',
             text: 'Plataforma eliminada correctamente',
             type: 'success'
           }, function () {
-            window.location.href = 'index.php';
+            window.location.href = 'gestionarPlataformas.php';
           });
         } else {
           window.location.href = res;
