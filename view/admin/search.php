@@ -23,6 +23,14 @@ if ($resultado->num_rows > 0) {
 ?>
     <div class="table-responsive">
         <h1 class="text-center"> JUEGOS DISPONIBLES </h1>
+        <div class="row" id="load" hidden="hidden">
+            <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
+                <img src="../../img/load.gif" width="100%" alt="">
+            </div>
+            <div class="col-xs-12 center text-accent">
+                <span>Validando información...</span>
+            </div>
+        </div>
         <table class="table table-bordered text-center">
             <thead>
                 <tr>
@@ -52,10 +60,14 @@ if ($resultado->num_rows > 0) {
                         </a>
                         <a href="noImplementado.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
                             <img src="../../img/editar.png" alt="Editar" width="50px">
+<<<<<<< Updated upstream
                         </a>
                         <a href="noImplementado.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
                             <img src="../../img/eliminar.jpeg" alt="Eliminar" width="50px">
                         </a>
+=======
+                        </a>                        
+>>>>>>> Stashed changes
                     </td>
                 </tr>
             <?php

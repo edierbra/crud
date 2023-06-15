@@ -26,7 +26,11 @@ CREATE TABLE `categorias` (
   `id_categoria_pk` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id_categoria_pk`)
+<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +54,11 @@ CREATE TABLE `plataformas` (
   `id_plataforma_pk` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id_plataforma_pk`)
+<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +85,7 @@ CREATE TABLE `usuario_videojuego` (
   KEY `id_videojuego_fk` (`id_videojuego_fk`),
   CONSTRAINT `usuario_videojuego_ibfk_1` FOREIGN KEY (`id_usuario_fk`) REFERENCES `usuarios` (`id_usuario_pk`),
   CONSTRAINT `usuario_videojuego_ibfk_2` FOREIGN KEY (`id_videojuego_fk`) REFERENCES `videojuegos` (`id_videojuego_pk`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -105,7 +113,11 @@ CREATE TABLE `usuarios` (
   `clave` varchar(255) NOT NULL,
   `cargo` varchar(1) NOT NULL,
   PRIMARY KEY (`id_usuario_pk`)
+<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -137,7 +149,11 @@ CREATE TABLE `videojuegos` (
   KEY `id_categoria_fk` (`id_categoria_fk`),
   CONSTRAINT `videojuegos_ibfk_1` FOREIGN KEY (`id_plataforma_fk`) REFERENCES `plataformas` (`id_plataforma_pk`),
   CONSTRAINT `videojuegos_ibfk_2` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categorias` (`id_categoria_pk`)
+<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+>>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

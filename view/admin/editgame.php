@@ -8,6 +8,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
 require '../../model/conexion.php';
 
+$idVideojuego = $_GET["id_videojuego_pk"];
 $conexion = new Conexion();
 $conexion->conectar();
 
@@ -16,6 +17,19 @@ $categorias = $conexion->query($sql);
 
 $sql2 = "SELECT id_plataforma_pk, nombre AS nombreplataforma FROM plataformas;";
 $plataformas = $conexion->query($sql2);
+
+$sql3 = "SELECT * FROM videojuegos WHERE id_videojuego_pk = '$idVideojuego'";
+$resultado = $conexion->query($sql3);
+
+if ($resultado->num_rows > 0) {
+    $videojuego = $resultado->fetch_assoc();
+
+    $titulo = $videojuego['titulo'];
+    $precio = $videojuego['precio'];
+    $tamano = $videojuego['tamano'];
+    $categoria = $videojuego['id_categoria_fk'];
+    $plataforma = $videojuego['id_plataforma_fk'];
+}
 ?>
 
 <?php include('../../comon/header.php') ?>
@@ -36,10 +50,6 @@ $plataformas = $conexion->query($sql2);
         .mt-2 {
             display: none;
         }
-
-        .custom-btn {
-            width: 150px;
-        }
     </style>
 </head>
 
@@ -55,7 +65,7 @@ $plataformas = $conexion->query($sql2);
                         <label class="sr-only" for="titulo">Título</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-gamepad fixed-width-icon"></i></div>
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingresa el título" oninput="validarCampo(this)">
+                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Ingresa el título" value="<?php echo $titulo; ?>" oninput="validarCampo(this)">
                         </div>
 
                         <script>
@@ -76,7 +86,7 @@ $plataformas = $conexion->query($sql2);
                         <label class="sr-only" for="precio">Precio</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-money-bill fixed-width-icon"></i></div>
-                            <input type="number" step="1" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio en pesos Colombianos">
+                            <input type="number" step="1" class="form-control" id="precio" name="precio" placeholder="Ingresa el precio en pesos Colombianos" value="<?php echo $precio; ?>">
                         </div>
 
                         <div style="margin-top: 15px;"></div>
@@ -84,7 +94,7 @@ $plataformas = $conexion->query($sql2);
                         <label class="sr-only" for="tamano">Tamaño</label>
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-expand fixed-width-icon"></i></div>
-                            <input type="number" step="1" class="form-control" id="tamano" name="tamano" placeholder="Ingresa el tamaño en MB">
+                            <input type="number" step="1" class="form-control" id="tamano" name="tamano" placeholder="Ingresa el tamaño en MB" value="<?php echo $tamano; ?>">
                         </div>
 
                         <div style="margin-top: 15px;"></div>
@@ -93,17 +103,18 @@ $plataformas = $conexion->query($sql2);
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-tag fixed-width-icon"></i></div>
                             <select id="categoria" class="form-control" name="categoria">
-                                <option disabled selected value="">Seleccione una Categoría</option>
-                                <?php
-                                if ($categorias->num_rows > 0) {
-                                    while ($row = $categorias->fetch_assoc()) {
-                                ?>
-                                        <option value=<?php echo $row['id_categoria_pk']; ?>><?php echo $row['nombrecategoria']; ?></option>
-                                <?php
-                                    }
+                            <option disabled selected value="">Seleccione una Categoría</option>
+                            <?php
+                            if ($categorias->num_rows > 0) {
+                                while ($row = $categorias->fetch_assoc()) {
+                                    $selected = ($row['id_categoria_pk'] == $categoria) ? 'selected' : '';
+                                    ?>
+                                    <option value="<?php echo $row['id_categoria_pk']; ?>" <?php echo $selected; ?>><?php echo $row['nombrecategoria']; ?></option>
+                                    <?php
                                 }
-                                ?>
-                            </select>
+                            }
+                            ?>
+                        </select>
                         </div>
 
                         <div style="margin-top: 15px;"></div>
@@ -112,17 +123,18 @@ $plataformas = $conexion->query($sql2);
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fas fa-desktop fixed-width-icon"></i></div>
                             <select id="plataforma" class="form-control" name="plataforma">
-                                <option disabled value="" selected>Seleccione una Plataforma</option>
-                                <?php
-                                if ($plataformas->num_rows > 0) {
-                                    while ($row = $plataformas->fetch_assoc()) {
-                                ?>
-                                        <option value=<?php echo $row['id_plataforma_pk']; ?>><?php echo $row['nombreplataforma']; ?></option>
-                                <?php
-                                    }
+                            <option disabled value="" selected>Seleccione una Plataforma</option>
+                            <?php
+                            if ($plataformas->num_rows > 0) {
+                                while ($row = $plataformas->fetch_assoc()) {
+                                    $selected = ($row['id_plataforma_pk'] == $plataforma) ? 'selected' : '';
+                                    ?>
+                                    <option value="<?php echo $row['id_plataforma_pk']; ?>" <?php echo $selected; ?>><?php echo $row['nombreplataforma']; ?></option>
+                                    <?php
                                 }
-                                ?>
-                            </select>
+                            }
+                            ?>
+                        </select>
                         </div>
 
                         <div style="margin-top: 15px;"></div>
@@ -137,14 +149,9 @@ $plataformas = $conexion->query($sql2);
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12">
-                                <div class="col-md-6">
-                                <button type="button" class="btn btn-primary btn-block custom-btn" name="button" id="crearjuego">Agregar VideoJuego</button>
-                                </div>
-                                
-                                <div class="col-md-6">
-                                <a href="./gestionarjuegos.php" class="btn btn-primary custom-btn">Volver</a>
-                                </div>
+                            <div class="col-xs-8 col-xs-offset-2">
+                                <div class="mt-2"></div>
+                                <button type="button" class="btn btn-primary btn-block" name="button" id="editarjuego" data-id="<?php echo $idVideojuego; ?>">Editar VideoJuego</button>
                             </div>
                         </div>
 

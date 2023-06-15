@@ -33,6 +33,7 @@ if ($resultado->num_rows > 0) {
                     <th class="text-center">Tamaño (MB)</th>
                     <th class="text-center">Categoría</th>
                     <th class="text-center">Plataforma</th>
+                    <th class="text-center">Opciones</th>
                 </tr>
             </thead>
             <?php
@@ -46,6 +47,11 @@ if ($resultado->num_rows > 0) {
                     <td><?php echo $row['tamano']; ?></td>
                     <td><?php echo $row['categoria']; ?></td>
                     <td><?php echo $row['plataforma']; ?></td>
+                    <td>
+                        <a href="deletegame.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
+                            <img src="../../img/eliminar.jpeg" alt="Eliminar" width="50px">
+                        </a>
+                    </td>
                 </tr>
             <?php
             }

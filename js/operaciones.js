@@ -279,3 +279,127 @@ $('#updateplataforma').click(function () {
     }
   });
 });
+
+
+$('#editarjuego').click(function () {
+  
+  var idVideojuego = $(this).data('id');
+  var form = $('#formulario_editarjuego').serialize();
+  // Traemos los datos de los inputs
+  var titulo = $('#titulo').val();
+  var precio = $('#precio').val();
+  var tamano = $('#tamano').val();
+  var categoria = $('#categoria').val();
+  var plataforma = $('#plataforma').val();
+
+  $.ajax({
+    method: 'POST',
+    url: '../../controller/editGameController.php?id='+ idVideojuego,
+    //data: form,
+    data: { idVideojuego: idVideojuego, titulo: titulo, precio: precio, tamano: tamano, categoria: categoria, plataforma: plataforma },
+    beforeSend: function () {
+      $('#load').show();
+    },
+    success: function (res) {
+      $('#load').hide();
+
+      if (res == 'error_1') {
+        swal('Error', 'Campos obligatorios, por favor llena todos los campos', 'warning');      
+      } else if (res == 'error_3') {
+        swal('Error en el Servidor', 'No se editó el Videojuego, intentelo otra vez ', 'error');
+      } else if (res == 'success') {
+        swal({
+          title: 'Éxito',
+          text: 'VideoJuego editado correctamente',
+          type: 'success'
+        }, function () {
+          window.location.href = 'gestionarjuegos.php';
+        });
+      } else {
+        window.location.href = res;
+      }
+    }
+  });
+
+  console.log('Datos enviados por AJAX:', {idVideojuego: idVideojuego, titulo: titulo, precio: precio, tamano: tamano, categoria: categoria, plataforma: plataforma });
+
+});
+
+$('#addGame').click(function () {
+  var idVideojuego = $(this).data('idv');
+  var idUsuario = $(this).data('idu');
+
+  $.ajax({
+      method: 'POST',
+      url: '../../controller/addGameController.php?idV=' + idVideojuego + '&idU=' + idUsuario,
+      beforeSend: function () {
+        $('#load').show();
+      },
+      success: function (res) {
+        $('#load').hide();
+
+        if (res == 'error_1') {
+          swal('Error', 'Solo se puede agregar una vez el videojuego', 'warning');
+        } else if (res == 'error_2') {
+          swal('Error en el Servidor', 'No se agregó el Videojuego, intentelo otra vez ', 'error');
+        } else if (res == 'success') {
+          swal({
+            title: 'Éxito',
+            text: 'VideoJuego agregado correctamente',
+            type: 'success'
+          }, function () {
+            window.location.href = 'gestionarjuegos.php';
+          });
+        } else {
+          window.location.href = res;
+        }
+      }
+    });
+
+    console.log('ID del Videojuego enviado por AJAX:', idVideojuego);
+    console.log('ID del Usuario enviado por AJAX:', idUsuario);
+});
+
+
+$('#deleteGame').click(function () {
+  var idVideojuego = $(this).data('idv');
+  var idUsuario = $(this).data('idu');
+  
+  $.ajax({
+      method: 'POST',
+      url: '../../controller/deleteGameController.php?idV=' + idVideojuego + '&idU=' + idUsuario,
+      beforeSend: function () {
+        $('#load').show();
+      },
+      success: function (res) {
+        $('#load').hide();
+
+        if (res == 'error_1') {
+          swal('Error', 'No existe el videojuego', 'warning');
+        } else if (res == 'error_2') {
+          swal('Error en el Servidor', 'No se eliminó el Videojuego, intentelo otra vez ', 'error');
+        } else if (res == 'success') {
+          swal({
+            title: 'Éxito',
+            text: 'VideoJuego eliminado correctamente',
+            type: 'success'
+          }, function () {
+            window.location.href = 'index.php';
+          });
+        } else {
+          window.location.href = res;
+        }
+      }
+    });
+
+    console.log('ID del Videojuego enviado por AJAX:', idVideojuego);
+    console.log('ID del Usuario enviado por AJAX:', idUsuario);
+});
+
+$('#cancelAddGame').click(function () {
+  window.location.href = 'gestionarjuegos.php';  
+});
+
+$('#cancelDeleteGame').click(function () {
+  window.location.href = 'index.php';  
+});
