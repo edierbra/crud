@@ -64,7 +64,7 @@ if ($resultado->num_rows > 0) {
                 <div class="mt-3"></div>
                 <form id="formulario_editarjuego">
                     <fieldset>
-                        <legend class="text-center text-bold" style="font-size: 30px;">Agregar VideoJuego</legend>
+                        <legend class="text-center text-bold" style="font-size: 30px;">Editar VideoJuego</legend>
 
                         <label class="sr-only" for="titulo">Título</label>
                         <div class="input-group">
