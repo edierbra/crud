@@ -10,7 +10,7 @@ require '../../model/conexion.php';
 
 $conexion = new Conexion();
 $conexion->conectar();
-$idCategoria = $_GET['id_categoria_pk'];
+$idPlataforma = $_GET['id_plataforma_pk'];
 
 ?>
 
@@ -47,8 +47,8 @@ $idCategoria = $_GET['id_categoria_pk'];
             <span>Validando información...</span>
         </div>
     </div>
-    <button id="deleteCategoria" class="btn btn-primary" data-id="<?php echo $idCategoria; ?>" >Confirmar</button>
-    <button id="cancelDeleteCategoria" class="btn btn-secondary">Cancelar</button>
+    <button id="deletePlataforma" class="btn btn-primary" data-id="<?php echo $idPlataforma; ?>" >Confirmar</button>
+    <button id="cancelDeletePlataforma" class="btn btn-secondary">Cancelar</button>
   </div>
     <!-- Jquery -->
     <script src="../../js/jquery.js"></script>

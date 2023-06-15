@@ -39,7 +39,7 @@ if ($resultado->num_rows > 0) {
                         <a href="updatePlataforma.php?id_plataforma_pk=<?php echo $row['id_plataforma_pk'] ?>" class="btn btn-secondary">
                             <img src="../../img/editar.png" alt="Editar" width="50px">
                         </a>
-                        <a href="noImplementado.php?id_plataforma_pk=<?php echo $row['id_plataforma_pk'] ?>" class="btn btn-secondary">
+                        <a href="deletePlataforma.php?id_plataforma_pk=<?php echo $row['id_plataforma_pk'] ?>" class="btn btn-secondary">
                             <img src="../../img/eliminar.jpeg" alt="Eliminar" width="50px">
                         </a>
                     </td>

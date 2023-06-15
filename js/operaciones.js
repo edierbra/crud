@@ -396,10 +396,88 @@ $('#deleteGame').click(function () {
     console.log('ID del Usuario enviado por AJAX:', idUsuario);
 });
 
+$('#deleteCategoria').click(function () {
+  var idCategoria = $(this).data('id');
+  
+  
+  $.ajax({
+      method: 'POST',
+      url: '../../controller/deleteCategoriaController.php?id=' + idCategoria,
+      beforeSend: function () {
+        $('#load').show();
+      },
+      success: function (res) {
+        $('#load').hide();
+
+        if (res == 'error_1') {
+          swal('Error', 'No existe la categoría', 'warning');
+        } else if (res == 'error_2') {
+          swal('Error en el Servidor', 'No se eliminó la categoria, intentelo otra vez ', 'error');
+        } else if (res == 'success') {
+          swal({
+            title: 'Éxito',
+            text: 'Categoria eliminada correctamente',
+            type: 'success'
+          }, function () {
+            window.location.href = 'index.php';
+          });
+        } else {
+          window.location.href = res;
+        }
+      }
+    });
+
+    console.log('ID de la categoria enviado por AJAX:', idCategoria);
+    
+});
+
+$('#deletePlataforma').click(function () {
+  var idPlataforma = $(this).data('id');
+  
+  
+  $.ajax({
+      method: 'POST',
+      url: '../../controller/deletePlataformaController.php?id=' + idPlataforma,
+      beforeSend: function () {
+        $('#load').show();
+      },
+      success: function (res) {
+        $('#load').hide();
+
+        if (res == 'error_1') {
+          swal('Error', 'No existe la plataforma', 'warning');
+        } else if (res == 'error_2') {
+          swal('Error en el Servidor', 'No se eliminó la plataforma, intentelo otra vez ', 'error');
+        } else if (res == 'success') {
+          swal({
+            title: 'Éxito',
+            text: 'Plataforma eliminada correctamente',
+            type: 'success'
+          }, function () {
+            window.location.href = 'index.php';
+          });
+        } else {
+          window.location.href = res;
+        }
+      }
+    });
+
+    console.log('ID de la plataforma enviado por AJAX:', idPlataforma);
+    
+});
+
 $('#cancelAddGame').click(function () {
   window.location.href = 'gestionarjuegos.php';  
 });
 
 $('#cancelDeleteGame').click(function () {
   window.location.href = 'index.php';  
+});
+
+$('#cancelDeleteCategoria').click(function () {
+  window.location.href = 'gestionarCategorias.php';  
+});
+
+$('#cancelDeletePlataforma').click(function () {
+  window.location.href = 'gestionarPlataformas.php';  
 });
