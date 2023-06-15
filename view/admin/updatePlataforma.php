@@ -16,7 +16,7 @@ $conexion->conectar();
 $sql = "SELECT nombre  FROM plataformas WHERE id_plataforma_pk='$id_plataforma';";
 $plataforma = $conexion->query($sql);
 while ($row = $plataforma->fetch_assoc()) {
-$nombre = $row['nombre'];
+    $nombre = $row['nombre'];
 }
 ?>
 
@@ -37,6 +37,10 @@ $nombre = $row['nombre'];
 
         .mt-2 {
             display: none;
+        }
+
+        .custom-btn {
+            width: 150px;
         }
     </style>
 </head>
@@ -90,7 +94,19 @@ $nombre = $row['nombre'];
                         <div class="row">
                             <div class="col-xs-8 col-xs-offset-2">
                                 <div class="mt-2"></div>
-                                <button type="button" class="btn btn-primary btn-block" name="button" id="updateplataforma">Editar Plataforma</button>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-block custom-btn" name="button" id="updateplataforma">Editar Plataforma</button>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <a href="./gestionarPlataformas.php" class="btn btn-primary custom-btn">Volver</a>
+                                </div>
                             </div>
                         </div>
 

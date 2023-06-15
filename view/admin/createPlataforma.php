@@ -25,6 +25,10 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
         .mt-2 {
             display: none;
         }
+
+        .custom-btn {
+            width: 150px;
+        }
     </style>
 </head>
 
@@ -35,7 +39,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                 <div class="mt-3"></div>
                 <form id="formulario_crearplataforma">
                     <fieldset>
-                        <legend class="text-center text-bold" style="font-size: 30px;">Agregar una Plataforma</legend>
+                        <legend class="text-center text-bold" style="font-size: 30px;">Agrega una Plataforma</legend>
 
                         <label class="sr-only" for="plataforma">Plataforma</label>
                         <div class="input-group">
@@ -50,10 +54,10 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
                                 if (!valido) {
                                     input.value = input.value.replace(/[^A-Za-z0-9\sáéíóúÁÉÍÓÚ]/g, '');
-                                    swal('Error', "Solo se permiten letras y números",'warning');
+                                    swal('Error', "Solo se permiten letras y números", 'warning');
                                 }
                             }
-                        </script>                  
+                        </script>
 
                         <div style="margin-top: 15px;"></div>
 
@@ -67,9 +71,14 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-8 col-xs-offset-2">
-                                <div class="mt-2"></div>
-                                <button type="button" class="btn btn-primary btn-block" name="button" id="crearplataforma">Agregar Plataforma</button>
+                            <div class="col-xs-12">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-primary btn-block custom-btn" name="button" id="crearplataforma">Agregar Plataforma</button>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                <a href="./gestionarPlataformas.php" class="btn btn-primary custom-btn">Volver</a>
+                                </div>
                             </div>
                         </div>
 

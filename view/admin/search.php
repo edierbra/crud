@@ -47,13 +47,13 @@ if ($resultado->num_rows > 0) {
                     <td><?php echo $row['categoria']; ?></td>
                     <td><?php echo $row['plataforma']; ?></td>
                     <td>
-                        <a href="addgame.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
+                        <a href="noImplementado.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
                             <img src="../../img/agregar.png" alt="Agreg" width="50px">
                         </a>
-                        <a href="editgame.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
+                        <a href="noImplementado.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
                             <img src="../../img/editar.png" alt="Editar" width="50px">
                         </a>
-                        <a href="deletegame.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
+                        <a href="noImplementado.php?id_videojuego_pk=<?php echo $row['id_videojuego_pk'] ?>" class="btn btn-secondary">
                             <img src="../../img/eliminar.jpeg" alt="Eliminar" width="50px">
                         </a>
                     </td>
