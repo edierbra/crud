@@ -33,13 +33,13 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
         <div class="form-group">
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-search"></i></span>
-            <input type="text" id="search" name="search" class="form-control input-lg" placeholder="Ingrese el nombre del videojuego a buscar">
+            <input type="text" id="search" name="search" class="form-control input-lg" placeholder="Ingrese el nombre de la categoria a buscar">
           </div>
         </div>
       </form>
 
-      <a href="creategame.php" class="btn btn-primary" style="display: inline-flex; align-items: center;">
-        Añadir Videojuego
+      <a href="createCategoria.php" class="btn btn-primary" style="display: inline-flex; align-items: center;">
+        Añadir Categoria
         <img src="../../img/agregar.png" alt="Agreg" width="50px" style="margin-left: 10px;">
       </a>
 
@@ -61,7 +61,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
 
         // Enviar una solicitud AJAX al archivo PHP para obtener los resultados
         $.ajax({
-          url: 'search.php',
+          url: 'searchCategorias.php',
           method: 'GET',
           data: {
             search: searchTerm

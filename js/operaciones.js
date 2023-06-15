@@ -119,7 +119,163 @@ $('#crearjuego').click(function () {
       }
     }
   });
+});
 
-  console.log('Datos enviados por AJAX:', { titulo: titulo, precio: precio, tamano: tamano, categoria: categoria, plataforma: plataforma });
+$('#crearcategoria').click(function () {
 
+  var form = $('#formulario_crearcategoria').serialize();
+  // Traemos los datos de los inputs
+  var categoria = $('#categoria').val();
+
+  $.ajax({
+    method: 'POST',
+    url: '../../controller/createCategoriaController.php',
+    //data: form,
+    data: { categoria: categoria },
+    beforeSend: function () {
+      $('#load').show();
+    },
+    success: function (res) {
+      $('#load').hide();
+
+      if (res == 'error_1') {
+        swal('Error', 'Campo obligatorio, por favor ingresa una categoria', 'warning');
+      } else if (res == 'error_2') {
+        swal('Error', 'Ya existe registrado una Categoria con el mismo nombre, ingrese otro nombre', 'error');
+      } else if (res == 'error_3') {
+        swal('Error en el Servidor', 'No se agrego la Categoria, intentelo otra vez ', 'error');
+      } else if (res == 'success') {
+        swal({
+          title: 'Éxito',
+          text: 'Categoria agregada correctamente',
+          type: 'success'
+        }, function () {
+          window.location.href = 'gestionarCategorias.php';
+        });
+      } else {
+        window.location.href = res;
+      }
+    }
+  });
+});
+
+$('#updatecategoria').click(function () {
+
+  var form = $('#formulario_updatecategoria').serialize();
+  // Traemos los datos de los inputs
+  var categoria = $('#categoria').val();
+  var id = $('#id').val();
+
+  $.ajax({
+    method: 'POST',
+    url: '../../controller/updateCategoriaController.php',
+    //data: form,
+    data: { categoria: categoria, id: id },
+    beforeSend: function () {
+      $('#load').show();
+    },
+    success: function (res) {
+      $('#load').hide();
+
+      if (res == 'error_1') {
+        swal('Error', 'Campo obligatorio, por favor ingresa una categoria', 'warning');
+      } else if (res == 'error_2') {
+        swal('Error', 'No has realizado cambios, modifique el nombre de la Categoria', 'warning');
+      } else if (res == 'error_3') {
+        swal('Error', 'Ya existe registrado una Categoria con el mismo nombre, ingrese otro nombre', 'error');
+      } else if (res == 'error_4') {
+        swal('Error en el Servidor', 'No se agrego la Categoria, intentelo otra vez ', 'error');
+      } else if (res == 'success') {
+        swal({
+          title: 'Éxito',
+          text: 'Categoria edidata correctamente',
+          type: 'success'
+        }, function () {
+          window.location.href = 'gestionarCategorias.php';
+        });
+      } else {
+        window.location.href = res;
+      }
+    }
+  });
+});
+
+$('#crearplataforma').click(function () {
+
+  var form = $('#formulario_crearplataforma').serialize();
+  // Traemos los datos de los inputs
+  var plataforma = $('#plataforma').val();
+
+  $.ajax({
+    method: 'POST',
+    url: '../../controller/createPlataformaController.php',
+    //data: form,
+    data: { plataforma: plataforma },
+    beforeSend: function () {
+      $('#load').show();
+    },
+    success: function (res) {
+      $('#load').hide();
+
+      if (res == 'error_1') {
+        swal('Error', 'Campo obligatorio, por favor ingresa una plataforma', 'warning');
+      } else if (res == 'error_2') {
+        swal('Error', 'Ya existe registrado una Plataforma con el mismo nombre, ingrese otro nombre', 'error');
+      } else if (res == 'error_3') {
+        swal('Error en el Servidor', 'No se agrego la Plataforma, intentelo otra vez ', 'error');
+      } else if (res == 'success') {
+        swal({
+          title: 'Éxito',
+          text: 'Plataforma agregada correctamente',
+          type: 'success'
+        }, function () {
+          window.location.href = 'gestionarPlataformas.php';
+        });
+      } else {
+        window.location.href = res;
+      }
+    }
+  });
+});
+
+
+$('#updateplataforma').click(function () {
+
+  var form = $('#formulario_updateplataforma').serialize();
+  // Traemos los datos de los inputs
+  var plataforma = $('#plataforma').val();
+  var id = $('#id').val();
+
+  $.ajax({
+    method: 'POST',
+    url: '../../controller/updatePlataformaController.php',
+    //data: form,
+    data: { plataforma: plataforma, id: id },
+    beforeSend: function () {
+      $('#load').show();
+    },
+    success: function (res) {
+      $('#load').hide();
+
+      if (res == 'error_1') {
+        swal('Error', 'Campo obligatorio, por favor ingresa una plataforma', 'warning');
+      } else if (res == 'error_2') {
+        swal('Error', 'No has realizado cambios, modifique el nombre de la Plataforma', 'warning');
+      } else if (res == 'error_3') {
+        swal('Error', 'Ya existe registrado una Plataforma con el mismo nombre, ingrese otro nombre', 'error');
+      } else if (res == 'error_4') {
+        swal('Error en el Servidor', 'No se agrego la Plataforma, intentelo otra vez ', 'error');
+      } else if (res == 'success') {
+        swal({
+          title: 'Éxito',
+          text: 'Plataforma edidata correctamente',
+          type: 'success'
+        }, function () {
+          window.location.href = 'gestionarPlataformas.php';
+        });
+      } else {
+        window.location.href = res;
+      }
+    }
+  });
 });

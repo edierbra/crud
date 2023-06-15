@@ -65,7 +65,7 @@ if ($resultado->num_rows > 0) {
             <h4>No se encontraron videojuegos en el sistema!!!</h4>
             <img src="../../img/sorry.png" alt="Lo siento" width="350px">
             <p>
-                No encuentras videojuegos? <a href="./agregarjuegos.php"> Agrega un videojuego!</a> ó <a href="./gestionarjuegos.php"> Realiza una nueva Busqueda!</a>
+                No encuentras videojuegos? <a href="./creategame.php"> Agrega un videojuego!</a> ó <a href="./gestionarjuegos.php"> Realiza una nueva Busqueda!</a>
             </p>
         <?php
         }
@@ -73,3 +73,5 @@ if ($resultado->num_rows > 0) {
         // Cerrar conexión
         $conexion->cerrar();
         ?>
+        </table>
+    </div>
