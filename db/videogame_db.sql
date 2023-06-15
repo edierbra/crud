@@ -26,11 +26,7 @@ CREATE TABLE `categorias` (
   `id_categoria_pk` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id_categoria_pk`)
-<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,11 +50,7 @@ CREATE TABLE `plataformas` (
   `id_plataforma_pk` int NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id_plataforma_pk`)
-<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -85,7 +77,7 @@ CREATE TABLE `usuario_videojuego` (
   KEY `id_videojuego_fk` (`id_videojuego_fk`),
   CONSTRAINT `usuario_videojuego_ibfk_1` FOREIGN KEY (`id_usuario_fk`) REFERENCES `usuarios` (`id_usuario_pk`),
   CONSTRAINT `usuario_videojuego_ibfk_2` FOREIGN KEY (`id_videojuego_fk`) REFERENCES `videojuegos` (`id_videojuego_pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +86,7 @@ CREATE TABLE `usuario_videojuego` (
 
 LOCK TABLES `usuario_videojuego` WRITE;
 /*!40000 ALTER TABLE `usuario_videojuego` DISABLE KEYS */;
-INSERT INTO `usuario_videojuego` VALUES (1,1),(1,2),(2,2),(3,3),(3,4),(4,5),(5,6),(5,7),(6,8),(7,9),(7,10),(8,11),(8,12),(9,13),(10,14),(10,15),(11,16),(11,17),(12,18),(13,19),(13,20);
+INSERT INTO `usuario_videojuego` VALUES (1,1),(2,1),(1,2),(2,2),(3,3),(3,4),(4,5),(5,6),(5,7),(6,8),(7,9),(7,10),(8,11),(8,12),(9,13),(10,14),(10,15),(11,16),(11,17),(12,18),(13,19),(13,20);
 /*!40000 ALTER TABLE `usuario_videojuego` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -113,11 +105,7 @@ CREATE TABLE `usuarios` (
   `clave` varchar(255) NOT NULL,
   `cargo` varchar(1) NOT NULL,
   PRIMARY KEY (`id_usuario_pk`)
-<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -149,11 +137,7 @@ CREATE TABLE `videojuegos` (
   KEY `id_categoria_fk` (`id_categoria_fk`),
   CONSTRAINT `videojuegos_ibfk_1` FOREIGN KEY (`id_plataforma_fk`) REFERENCES `plataformas` (`id_plataforma_pk`),
   CONSTRAINT `videojuegos_ibfk_2` FOREIGN KEY (`id_categoria_fk`) REFERENCES `categorias` (`id_categoria_pk`)
-<<<<<<< Updated upstream
 ) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-=======
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
->>>>>>> Stashed changes
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-14 21:43:15
+-- Dump completed on 2023-06-14 21:59:06
